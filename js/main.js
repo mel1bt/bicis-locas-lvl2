@@ -1,4 +1,5 @@
 function validateForm(){
+
 	var nom = document.getElementById("name").value;
     var apellido = document.getElementById("lastname").value;
     var cor = document.getElementById("input-email").value;
@@ -52,9 +53,13 @@ function validateForm(){
 	var opcion = document.querySelector("select").selectedIndex;
         if( opcion == null || opcion == "" ) {
         text = "Por favor, seleccione una opción.";
-        error(text, "select-control");
+        var error = document.createElement("span");
+		var textError = document.createTextNode(text);
+		error.appendChild(textError);
+		var name = document.querySelector("select");
+		var padre = name.parentNode;
+		var newSpan = padre.insertBefore(error, name);
     }
-    return true;
 }
 	function error(texto, identificador){
 		var error = document.createElement("span");
